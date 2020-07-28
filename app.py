@@ -54,11 +54,6 @@ def db_seed():
     print("Database seeded")
 
 
-@app.route('/yoo')
-def hello_world():
-    return jsonify(message='Hello bot')
-
-
 @app.route('/characters', methods=['PATCH'])
 def characters():
     characters_list = Origin.query.all()
