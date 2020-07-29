@@ -122,7 +122,7 @@ def update_character():
         return jsonify(message='You updated a character'), 202
     else:
         return jsonify(message="This character doesnt exist"), 404
-
+    
 
 @app.route('/remove_character/<int:character_id>',methods=['DELETE'])
 def remove_character(character_id: int):
