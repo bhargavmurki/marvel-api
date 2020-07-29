@@ -54,7 +54,7 @@ def db_seed():
     print("Database seeded")
 
 
-@app.route('/characters', methods=['PATCH'])
+@app.route('/characters', methods=['GET'])
 def characters():
     characters_list = Origin.query.all()
     result = origins_schema.dump(characters_list)
