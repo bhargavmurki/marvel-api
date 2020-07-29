@@ -61,7 +61,7 @@ def characters():
     return jsonify(result)
 
 
-@app.route("/character_details/<int:character_id>", methods=['GET'])
+@app.route("/characters/<int:character_id>", methods=['GET'])
 def character_details(character_id: int):
     character = Origin.query.filter_by(character_id=character_id).first()
     if character:
@@ -71,7 +71,7 @@ def character_details(character_id: int):
         return jsonify(message="This character does not exist"), 404
 
 
-@app.route('/add_character', methods=['POST'])
+@app.route('/characters', methods=['POST'])
 def add_character():
     character_name = request.form['character_name']
     test = Origin.query.filter_by(character_name=character_name).first()
@@ -103,7 +103,7 @@ def add_character():
         return jsonify(message='You added a new character'), 201
 
 
-@app.route('/update_character', methods=['PUT'])
+@app.route('/characters', methods=['PUT'])
 def update_character():
     character_id = int(request.form['character_id'])
     character = Origin.query.filter_by(character_id=character_id).first()
@@ -124,7 +124,7 @@ def update_character():
         return jsonify(message="This character doesnt exist"), 404
     
 
-@app.route('/remove_character/<int:character_id>',methods=['DELETE'])
+@app.route('/characters/<int:character_id>',methods=['DELETE'])
 def remove_character(character_id: int):
     character = Origin.query.filter_by(character_id=character_id).first()
     if character:
@@ -135,7 +135,8 @@ def remove_character(character_id: int):
         return jsonify(messsage='Character not found'), 404
 
 
-# database models
+# database model
+
 class Origin(db.Model):
     __tablename__ = 'origin'
     character_id = Column(Integer, primary_key=True)
