@@ -135,8 +135,7 @@ def remove_character(character_id: int):
         return jsonify(messsage='Character not found'), 404
 
 
-# database model
-
+# Database model
 class Origin(db.Model):
     __tablename__ = 'origin'
     character_id = Column(Integer, primary_key=True)
