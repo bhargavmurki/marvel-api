@@ -12,19 +12,19 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 
-@app.cli.command('db_create')
+@app.cli.command('db_create')  # For creating the database
 def db_create():
     db.create_all()
     print('Database Created')
 
 
-@app.cli.command('db_drop')
+@app.cli.command('db_drop')  # For deleting the database
 def db_drop():
     db.drop_all()
     print('Database Dropped')
 
 
-@app.cli.command('db_seed')
+@app.cli.command('db_seed')  # For seeding the database
 def db_seed():
     ironman = Origin(character_name='Anthony Edward Stark',
                      alias='Ironman',
@@ -54,14 +54,14 @@ def db_seed():
     print("Database seeded")
 
 
-@app.route('/characters', methods=['GET'])
+@app.route('/characters', methods=['GET']) # To get a list of all the characters
 def characters():
     characters_list = Origin.query.all()
     result = origins_schema.dump(characters_list)
     return jsonify(result)
 
 
-@app.route("/characters/<int:character_id>", methods=['GET'])
+@app.route("/characters/<int:character_id>", methods=['PATCH']) # To get a list of a single character
 def character_details(character_id: int):
     character = Origin.query.filter_by(character_id=character_id).first()
     if character:
@@ -71,7 +71,7 @@ def character_details(character_id: int):
         return jsonify(message="This character does not exist"), 404
 
 
-@app.route('/characters', methods=['POST'])
+@app.route('/characters', methods=['POST']) # To add a new character
 def add_character():
     character_name = request.form['character_name']
     test = Origin.query.filter_by(character_name=character_name).first()
@@ -103,7 +103,7 @@ def add_character():
         return jsonify(message='You added a new character'), 201
 
 
-@app.route('/characters', methods=['PUT'])
+@app.route('/characters', methods=['PUT']) # To update an existing character
 def update_character():
     character_id = int(request.form['character_id'])
     character = Origin.query.filter_by(character_id=character_id).first()
@@ -122,15 +122,15 @@ def update_character():
         return jsonify(message='You updated a character'), 202
     else:
         return jsonify(message="This character doesnt exist"), 404
-    
 
-@app.route('/characters/<int:character_id>',methods=['DELETE'])
+
+@app.route('/characters/<int:character_id>', methods=['DELETE']) # To delete an existing character
 def remove_character(character_id: int):
     character = Origin.query.filter_by(character_id=character_id).first()
     if character:
         db.session.delete(character)
         db.session.commit()
-        return jsonify(message='You deleted a Character'), 202
+        return jsonify(message='You deleted a character'), 202
     else:
         return jsonify(messsage='Character not found'), 404
 
@@ -152,7 +152,7 @@ class Origin(db.Model):
     power = Column(Integer)
 
 
-class OriginSchema(ma.Schema):
+class OriginSchema(ma.Schema): # Database Schema
     class Meta:
         fields = ('character_id', 'character_name', 'alias', 'birthplace', 'first_appearance'
                   , 'intelligence', 'strength')
