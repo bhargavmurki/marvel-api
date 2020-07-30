@@ -2,31 +2,57 @@
 An API which gives information about the characters.
 
 # Getting Started
-This API is compeletely done using FLASK Framework in python and also SQLite.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 # Prerequisites
-You'll need the following packages
-- flask 
-- flask_sqlalchemy
-- flask_marshmallow
-- Create a virtual environment
 
-Use the recent versions so that there are no difficulties
+What things you need to install the software and how to install them
 
-# Deployment
-- Export all the files in the repository into the local system, setup the virtual environment, install all the requirements/prerequisites
-- Create and seed the database.
-- Add characters into the database (I have added only a few characters, so you can add more)
-- Run the code
-- Pass the route needed into Postman with the proper HTTP Method.
-- Parameters in add, update and delete methods have to be passed only by "form-data"
-- Then hit send!
+```
+Python 3
+virtualenv
+```
+# Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+1. Clone the repository
+```
+git clone git@github.com:bhargavmurki/marvel-api.git
+```
+2. Create virtual environment
+```
+virtualenv .env
+```
+3. Activate virtual environment
+```
+. .env/scripts/activate
+```
+4. Install the requirements
+```
+pip install -r requirements.txt
+```
+5. Create the database
+```
+export FLASK_APP="path/to/app.py"
+
+flask db_create
+```
+6. Seed the database
+```
+flask db_seed
+```
+7. Run the app
+```
+flask run 
+```
+This will run the app on http://127.0.0.1:5000/
+
 
 # Built With
-- PyCharm Community Edition - For developing the API 
-- Postman - Testing and running the API
-- DB Browser - For maintaining the database
-- (Use the recent versions so that there are no difficulties)
+[PyCharm CE edition](https://www.jetbrains.com/pycharm/download/#section=windows)
+[Postman](https://www.postman.com/downloads)
+[DB Browser](https://sqlitebrowser.org/dl/)
 
 # Authors
 Bhargav Murki (bhargavmurki@gmail.com)
