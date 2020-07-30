@@ -50,9 +50,9 @@ This will run the app on http://127.0.0.1:5000/
 
 
 # Built With
-[PyCharm CE edition](https://www.jetbrains.com/pycharm/download/#section=windows)
-[Postman](https://www.postman.com/downloads)
-[DB Browser](https://sqlitebrowser.org/dl/)
+- [PyCharm CE edition](https://www.jetbrains.com/pycharm/download/#section=windows)
+- [Postman](https://www.postman.com/downloads)
+- [DB Browser](https://sqlitebrowser.org/dl/)
 
 # Authors
 Bhargav Murki (bhargavmurki@gmail.com)
